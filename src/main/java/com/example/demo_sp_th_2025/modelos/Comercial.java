@@ -1,7 +1,9 @@
 package com.example.demo_sp_th_2025.modelos;
 
-import java.math.BigDecimal;
+import lombok.Data;
 
+import java.math.BigDecimal;
+@Data
 public class Comercial {
     private int id;
     private String nombre;
