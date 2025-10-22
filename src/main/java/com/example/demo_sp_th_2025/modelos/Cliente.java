@@ -6,7 +6,7 @@ public class Cliente {
     private String apellido1;
     private String apellido2;
     private String ciudad;
-    private int categoria; // Puede ser null, por eso Integer y no int
+    private int categoria;
 
     public Cliente(int id, String nombre, String apellido1, String apellido2, String ciudad, int categoria) {
         this.id = id;
