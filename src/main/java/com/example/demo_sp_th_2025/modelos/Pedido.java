@@ -10,8 +10,8 @@ public class Pedido {
     private int id;
     private BigDecimal total;
     private LocalDate fecha;
-    private int idCliente;
-    private int idComercial;
+    private Integer idCliente;
+    private Integer idComercial;
 
 }
 
