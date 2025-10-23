@@ -1,7 +1,10 @@
 package com.example.demo_sp_th_2025.modelos;
 
+import lombok.Data;
+
 import java.sql.Date;
 
+@Data
 public class Pedido {
     private int id;
     private double total;
@@ -9,76 +12,5 @@ public class Pedido {
     private int idCliente;
     private int idComercial;
 
-    public Pedido(int id, double total, Date fecha, int idCliente, int idComercial) {
-        this.id = id;
-        this.total = total;
-        this.fecha = fecha;
-        this.idCliente = idCliente;
-        this.idComercial = idComercial;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public double getTotal() {
-        return total;
-    }
-
-    public void setTotal(double total) {
-        this.total = total;
-    }
-
-    public Date getFecha() {
-        return fecha;
-    }
-
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public int getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
-    }
-
-    public int getIdComercial() {
-        return idComercial;
-    }
-
-    public void setIdComercial(int idComercial) {
-        this.idComercial = idComercial;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Pedido pedido = (Pedido) o;
-        return id == pedido.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return id;
-    }
-
-    @Override
-    public String toString() {
-        return "Pedido{" +
-                "id=" + id +
-                ", total=" + total +
-                ", fecha=" + fecha +
-                ", idCliente=" + idCliente +
-                ", idComercial=" + idComercial +
-                '}';
-    }
 }
 
