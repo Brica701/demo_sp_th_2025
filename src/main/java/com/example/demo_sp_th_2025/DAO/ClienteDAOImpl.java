@@ -21,6 +21,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 
     @Override
     public void create(Cliente cliente) {
+        log.info("Cliente creado:...");
 
     }
 
