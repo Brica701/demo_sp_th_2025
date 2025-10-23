@@ -2,13 +2,14 @@ package com.example.demo_sp_th_2025.modelos;
 
 import lombok.Data;
 
-import java.sql.Date;
+import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Data
 public class Pedido {
     private int id;
-    private double total;
-    private Date fecha;
+    private BigDecimal total;
+    private LocalDate fecha;
     private int idCliente;
     private int idComercial;
 
