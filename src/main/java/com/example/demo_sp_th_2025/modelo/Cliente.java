@@ -1,4 +1,4 @@
-package com.example.demo_sp_th_2025.modelos;
+package com.example.demo_sp_th_2025.modelo;
 
 import lombok.Data;
 
