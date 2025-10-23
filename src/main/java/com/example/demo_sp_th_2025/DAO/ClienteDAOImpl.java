@@ -1,13 +1,21 @@
 package com.example.demo_sp_th_2025.DAO;
 
 import com.example.demo_sp_th_2025.modelo.Cliente;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
-public class CliendaoDAOImpl implements ClienteDAO {
+//Anotación lombok para logging (traza) de la aplicación
+@Slf4j
+//Un Repository es un componente y a su vez un estereotipo de Spring
+//que forma parte de la 'capa de persistencia'.
+@Repository
 
-    public CliendaoDAOImpl() {
+public class ClienteDAOImpl implements ClienteDAO {
+
+    public ClienteDAOImpl() {
         super();
     }
 
