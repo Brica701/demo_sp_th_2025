@@ -1,11 +1,13 @@
 package com.example.demo_sp_th_2025.modelo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Data
+@AllArgsConstructor
 public class Pedido {
     private int id;
     private BigDecimal total;
