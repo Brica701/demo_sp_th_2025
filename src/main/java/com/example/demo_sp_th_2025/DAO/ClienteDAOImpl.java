@@ -33,7 +33,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 
         //Desde java15+ se tiene la triple quote """ para bloques de texto como cadenas.
         String sqlInsert = """
-							INSERT INTO cliente (nombre, apellido1, apellido2, ciudad, categoría) 
+							INSERT INTO cliente (nombre, apellido1, apellido2, ciudad, categoria) 
 							VALUES  (     ?,         ?,         ?,       ?,         ?)
 						   """;
 
@@ -96,7 +96,7 @@ public class ClienteDAOImpl implements ClienteDAO {
                                 rs.getString("apellido1"),
                                 rs.getString("apellido2"),
                                 rs.getString("ciudad"),
-                                rs.getInt("categoría"))
+                                rs.getInt("categoria"))
                         , id
                 );
 
@@ -116,7 +116,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 														apellido1 = ?, 
 														apellido2 = ?,
 														ciudad = ?,
-														categoría = ?  
+														categoria = ?  
 												WHERE id = ?
 										""", cliente.getNombre()
                 , cliente.getApellido1()
