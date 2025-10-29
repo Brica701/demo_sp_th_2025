@@ -1,8 +1,10 @@
 package com.example.demo_sp_th_2025.modelo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class Cliente {
     private int id;
     private String nombre;
