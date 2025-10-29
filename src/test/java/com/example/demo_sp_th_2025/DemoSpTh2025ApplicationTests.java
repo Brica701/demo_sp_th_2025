@@ -27,4 +27,15 @@ class DemoSpTh2025ApplicationTests {
         list.forEach(System.out::println);
     }
 
+    @Test
+    void testFind() {
+        Cliente cliente = clienteDAO.find(1).orElse(null);
+        System.out.println(cliente);
+    }
+
+    @Test
+    void testUpdate() {
+        Cliente cliente = new Cliente(1, "Juanito", "Perez", "Perez", "Monterrey", 1);
+        clienteDAO.update(cliente);
+    }
 }
