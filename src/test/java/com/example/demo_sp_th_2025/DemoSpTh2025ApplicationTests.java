@@ -30,6 +30,11 @@ class DemoSpTh2025ApplicationTests {
                .ciudad("Malaga")
                .categoria(1)
                .build();
+
+       System.out.println("Antes de crear: " + cliente.getId());
+
+       clienteDAO.create(cliente);
+        System.out.println("Despues de crear: " + cliente.getId());
     }
 
     @Test

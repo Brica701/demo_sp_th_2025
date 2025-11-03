@@ -56,7 +56,7 @@ public class ClienteDAOImpl implements ClienteDAO {
 
         },keyHolder);
 
-        cliente.setId((int) keyHolder.getKey());
+        cliente.setId(keyHolder.getKey().intValue());
 
     }
 
