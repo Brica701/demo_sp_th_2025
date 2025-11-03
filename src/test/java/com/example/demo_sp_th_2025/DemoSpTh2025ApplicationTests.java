@@ -22,6 +22,17 @@ class DemoSpTh2025ApplicationTests {
     }
 
     @Test
+    void testCreate() {
+       Cliente cliente = Cliente.builder()
+               .nombre("Jose")
+               .apellido1("Martin")
+               .apellido2("Tejero")
+               .ciudad("Malaga")
+               .categoria(1)
+               .build();
+    }
+
+    @Test
     void testGetAll() {
         List<Cliente> list = clienteDAO.getAll();
         list.forEach(System.out::println);
@@ -29,7 +40,7 @@ class DemoSpTh2025ApplicationTests {
 
     @Test
     void testFind() {
-        Cliente cliente = clienteDAO.find(1).orElse(null);
+        Cliente cliente = clienteDAO.find(1).get();
         System.out.println(cliente);
     }
 
