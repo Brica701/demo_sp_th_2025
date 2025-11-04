@@ -110,32 +110,37 @@ public class ClienteDAOImpl implements ClienteDAO {
 
     @Override
     public void update(Cliente cliente) {
-        int rows = jdbcTemplate.update("""
+        int rowsUpdated = jdbcTemplate.update("""
 										UPDATE cliente SET 
-														nombre = ?, 
+													    nombre = ?, 
 														apellido1 = ?, 
 														apellido2 = ?,
 														ciudad = ?,
 														categoria = ?  
 												WHERE id = ?
 										""", cliente.getNombre()
-                , cliente.getApellido1()
-                , cliente.getApellido2()
-                , cliente.getCiudad()
-                , cliente.getCategoria()
-                , cliente.getId());
+                                           , cliente.getApellido1()
+                                           , cliente.getApellido2()
+                                           , cliente.getCiudad()
+                                           , cliente.getCategoria()
+                                           , cliente.getId());
 
-        log.info("Update de Cliente con {} registros actualizados.", rows);
+        log.debug("Update de Cliente con {} registros actualizados.", rowsUpdated);
 
     }
 
 
     @Override
     public void delete(int id) {
+        int rowsDelete = jdbcTemplate.update("""
+										DELETE FROM cliente   
+							
+												WHERE id = ?
+										""", id);
 
-        int rows = jdbcTemplate.update("DELETE FROM cliente WHERE id = ?", id);
 
-        log.info("Delete de Cliente con {} registros eliminados.", rows);
+        log.debug("Update de Cliente con {} registros actualizados.", rowsDelete);
+        log.debug("Update de Cliente con {} registros actualizados.", rowsDelete);
 
     }
 

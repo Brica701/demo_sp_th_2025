@@ -2,11 +2,13 @@ package com.example.demo_sp_th_2025;
 
 import com.example.demo_sp_th_2025.DAO.ClienteDAO;
 import com.example.demo_sp_th_2025.modelo.Cliente;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 class DemoSpTh2025ApplicationTests {
@@ -51,7 +53,33 @@ class DemoSpTh2025ApplicationTests {
 
     @Test
     void testUpdate() {
-        Cliente cliente = new Cliente(1, "Juanito", "Perez", "Perez", "Monterrey", 1);
+        Cliente cliente = new Cliente(1, "Juanito", "Perez", "Perez", "Malaga", 1);
+        cliente.setNombre("Juanito");
         clienteDAO.update(cliente);
+
+        Optional<Cliente> clienteOptional = clienteDAO.find(cliente.getId());
+
+        if(clienteOptional.isPresent()) {
+            Assertions.assertEquals("Juanito", clienteOptional.get().getNombre());
+        } else {
+            Assertions.fail("Cliente no encontrado");
+        }
+    }
+
+    @Test
+    void testDelete() {
+        Cliente cliente = Cliente.builder()
+                .nombre("Juanito")
+                .apellido1("Perez")
+                .apellido2("Perez")
+                .ciudad("Malaga")
+                .categoria(1)
+                .build();
+        clienteDAO.create(cliente);
+        clienteDAO.delete(cliente.getId());
+
+        Optional<Cliente> clienteOptional = clienteDAO.find(cliente.getId());
+        Assertions.assertTrue(clienteOptional.isEmpty());
+
     }
 }
