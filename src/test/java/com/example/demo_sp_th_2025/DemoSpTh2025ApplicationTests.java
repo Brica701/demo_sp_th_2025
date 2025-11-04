@@ -45,7 +45,7 @@ class DemoSpTh2025ApplicationTests {
 
     @Test
     void testFind() {
-        Cliente cliente = clienteDAO.find(1).get();
+        Cliente cliente = clienteDAO.find(3).get();
         System.out.println(cliente);
     }
 

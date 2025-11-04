@@ -92,7 +92,7 @@ public class ClienteDAOImpl implements ClienteDAO {
                 """,
                 (ResultSet rs, int rowNum) -> Cliente.builder()
                         .id(rs.getInt("id"))
-                        .nombre(rs.getString("nombte"))
+                        .nombre(rs.getString("nombre"))
                         .apellido1(rs.getString("apellido1"))
                         .apellido2(rs.getString("apellido2"))
                         .ciudad(rs.getString("ciudad"))
