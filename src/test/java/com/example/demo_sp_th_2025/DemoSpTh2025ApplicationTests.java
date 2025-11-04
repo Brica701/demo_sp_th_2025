@@ -27,7 +27,7 @@ class DemoSpTh2025ApplicationTests {
     @Test
     void contextLoads() {
     }
-    /*
+
     @Test
     void testCreate() {
        Cliente cliente = Cliente.builder()
@@ -42,7 +42,7 @@ class DemoSpTh2025ApplicationTests {
 
        clienteDAO.create(cliente);
         System.out.println("Despues de crear: " + cliente.getId());
-    }*/
+    }
 
     @Test
     void testGetAll() {
