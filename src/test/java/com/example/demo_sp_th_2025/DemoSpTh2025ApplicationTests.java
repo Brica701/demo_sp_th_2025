@@ -53,7 +53,15 @@ class DemoSpTh2025ApplicationTests {
 
     @Test
     void testUpdate() {
-        Cliente cliente = new Cliente(1, "Juanito", "Perez", "Perez", "Malaga", 1);
+        Cliente cliente = Cliente.builder()
+                .nombre("Juanito")
+                .apellido1("Perez")
+                .apellido2("Perez")
+                .ciudad("Malaga")
+                .categoria(1)
+                .build();
+        System.out.println("Antes de crear: " + cliente.getId());
+        clienteDAO.create(cliente);
         cliente.setNombre("Juanito");
         clienteDAO.update(cliente);
 
