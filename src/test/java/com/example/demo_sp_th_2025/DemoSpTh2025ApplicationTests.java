@@ -1,12 +1,15 @@
 package com.example.demo_sp_th_2025;
 
 import com.example.demo_sp_th_2025.DAO.ClienteDAO;
+import com.example.demo_sp_th_2025.DAO.ComercialDAO;
 import com.example.demo_sp_th_2025.modelo.Cliente;
+import com.example.demo_sp_th_2025.modelo.Comercial;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,12 +20,14 @@ class DemoSpTh2025ApplicationTests {
 
     @Autowired
     private ClienteDAO clienteDAO;
+    @Autowired
+    private ComercialDAO comercialDAO;
 
 
     @Test
     void contextLoads() {
     }
-
+    /*
     @Test
     void testCreate() {
        Cliente cliente = Cliente.builder()
@@ -37,7 +42,7 @@ class DemoSpTh2025ApplicationTests {
 
        clienteDAO.create(cliente);
         System.out.println("Despues de crear: " + cliente.getId());
-    }
+    }*/
 
     @Test
     void testGetAll() {
@@ -67,7 +72,7 @@ class DemoSpTh2025ApplicationTests {
 
         Optional<Cliente> clienteOptional = clienteDAO.find(cliente.getId());
 
-        if(clienteOptional.isPresent()) {
+        if (clienteOptional.isPresent()) {
             Assertions.assertEquals("Juanito", clienteOptional.get().getNombre());
         } else {
             Assertions.fail("Cliente no encontrado");
@@ -90,4 +95,74 @@ class DemoSpTh2025ApplicationTests {
         Assertions.assertTrue(clienteOptional.isEmpty());
 
     }
+
+
+    @Test
+    void testCreateComercial() {
+        Comercial comercial = Comercial.builder()
+                .nombre("Jose")
+                .apellido1("Martin")
+                .apellido2("Tejero")
+                .comision(new BigDecimal("0.03")) // 3%
+                .build();
+
+        System.out.println("Antes de crear: " + comercial.getId());
+        comercialDAO.create(comercial);
+        System.out.println("Después de crear: " + comercial.getId());
+    }
+
+    @Test
+    void testGetAllComercial() {
+        List<Comercial> list = comercialDAO.getAll();
+        list.forEach(System.out::println);
+    }
+
+    @Test
+    void testFindComercial() {
+        Comercial comercial = comercialDAO.find(3).get();
+        System.out.println(comercial);
+    }
+
+    @Test
+    void testUpdateComercial() {
+        Comercial comercial = Comercial.builder()
+                .nombre("Jose")
+                .apellido1("Martin")
+                .apellido2("Tejero")
+                .comision(new BigDecimal("0.03")) // 3%
+                .build();
+        System.out.println("Antes de crear: " + comercial.getId());
+        comercialDAO.create(comercial);
+        comercial.setNombre("Juanito");
+        comercialDAO.update(comercial);
+
+        Optional<Comercial> comercialOptional = comercialDAO.find(comercial.getId());
+
+        if (comercialOptional.isPresent()) {
+            Assertions.assertEquals("Juanito", comercialOptional.get().getNombre());
+        } else {
+            Assertions.fail("Comercial no encontrado");
+        }
+    }
+
+
+    @Test
+    void testDeleteComercial() {
+
+        Comercial comercial = Comercial.builder()
+                .nombre("Jose")
+                .apellido1("Martin")
+                .apellido2("Tejero")
+                .comision(new BigDecimal("0.03")) // 3%
+                .build();
+        comercialDAO.create(comercial);
+        comercialDAO.delete(comercial.getId());
+
+        Optional<Comercial> comercialOptional = comercialDAO.find(comercial.getId());
+        Assertions.assertTrue(comercialOptional.isEmpty());
+    }
 }
+
+
+
+
