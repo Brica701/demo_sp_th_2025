@@ -62,7 +62,7 @@ public class DemothController {
     }
 
     @GetMapping("/demoth3_2")
-    public String demothHttpSession2(Model model, HttpSession httpSession){
+    public String demothHttpSession2(){
 
 
 
