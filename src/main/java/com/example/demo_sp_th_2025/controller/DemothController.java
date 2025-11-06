@@ -1,6 +1,8 @@
 package com.example.demo_sp_th_2025.controller;
 
 import com.example.demo_sp_th_2025.modelo.Cliente;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,6 +11,11 @@ import java.util.List;
 
 @Controller
 public class DemothController {
+    private final StringHttpMessageConverter stringHttpMessageConverter;
+
+    public DemothController(StringHttpMessageConverter stringHttpMessageConverter) {
+        this.stringHttpMessageConverter = stringHttpMessageConverter;
+    }
 
     //Sin service, solo actuar sobre plantillas html
 
@@ -39,4 +46,28 @@ public class DemothController {
 
     return "demoth2";
     }
+
+    @GetMapping("/demoth3")
+    public String demothHttpSession(Model model, HttpSession session){
+
+        String mensajeAsesion = "Lo grabé en demoth3";
+        String mensajeModel = "Este solo lo ve plantilla demoth3";
+
+
+        model.addAttribute("mensajeModel", mensajeModel);
+
+        //Atribute en sesion son visble en todos los endspoits
+        session.setAttribute("mensajeAsesion", mensajeAsesion);
+        return "demoth3";
+    }
+
+    @GetMapping("/demoth3_2")
+    public String demothHttpSession2(Model model, HttpSession httpSession){
+
+
+
+
+        return "demoth3";
+    }
+
 }
