@@ -31,9 +31,9 @@ class DemoSpTh2025ApplicationTests {
     @Test
     void testCreate() {
        Cliente cliente = Cliente.builder()
-               .nombre("Jose")
-               .apellido1("Martin")
-               .apellido2("Tejero")
+               .nombre("bro")
+               .apellido1("eres")
+               .apellido2("payasa")
                .ciudad("Malaga")
                .categoria(1)
                .build();
@@ -82,17 +82,17 @@ class DemoSpTh2025ApplicationTests {
     @Test
     void testDelete() {
         Cliente cliente = Cliente.builder()
-                .nombre("Juanito")
-                .apellido1("Perez")
-                .apellido2("Perez")
+                .nombre("Jose")
+                .apellido1("Martin")
+                .apellido2("Tejero")
                 .ciudad("Malaga")
                 .categoria(1)
                 .build();
         clienteDAO.create(cliente);
         clienteDAO.delete(cliente.getId());
 
-        Optional<Cliente> clienteOptional = clienteDAO.find(cliente.getId());
-        Assertions.assertTrue(clienteOptional.isEmpty());
+        Optional<Cliente> optionalCliente = clienteDAO.find(cliente.getId());
+        Assertions.assertTrue(optionalCliente.isEmpty());
 
     }
 

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<th:block th:each="escritores: ${escritores}">
+
+    <div>
+        <span th:text="${escritores.nombre}">Escritor</span>
+    </div>
+</th:block>
+
+</body>
+</html>
