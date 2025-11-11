@@ -1,17 +1,26 @@
 package com.example.demo_sp_th_2025.controller;
 
+import com.example.demo_sp_th_2025.DAO.ClienteDAO;
 import com.example.demo_sp_th_2025.modelo.Cliente;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
+
 @Controller
+
 public class DemothController {
     private final StringHttpMessageConverter stringHttpMessageConverter;
+
+    @Autowired
+    private ClienteDAO clienteDAO;
 
     public DemothController(StringHttpMessageConverter stringHttpMessageConverter) {
         this.stringHttpMessageConverter = stringHttpMessageConverter;
@@ -84,5 +93,32 @@ public class DemothController {
 
     }
 
+    // FORMULARIOS
+
+    @GetMapping("/demoth/crear")
+    public String demothCrear(Model model){
+        Cliente cliente = new Cliente();
+        model.addAttribute("cliente", cliente);
+        return "demoth-crear";
+    }
+
+    @PostMapping("/demoth/crear")
+    public String demothCrearPost(@ModelAttribute Cliente cliente) {
+
+        clienteDAO.create(cliente);
+
+        return "redirect:/demoth/listar";
+
+    }
+
+    @GetMapping("/demoth/listar")
+    public String demothListar(Model model){
+        List<Cliente> list = clienteDAO.getAll();
+        model.addAttribute("clientes", list);
+        return "demoth-listar";
+    }
+
+
+    // FIN FORMULARIOS
 
 }
